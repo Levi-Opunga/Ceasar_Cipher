@@ -1,7 +1,6 @@
 import java.io.Console;
 
 public class Decrypt {
-
     public static void main() {
         Console myTerminalInput = System.console();
         System.out.println("Enter the key shift you want to use to decrypt:");
@@ -10,7 +9,7 @@ public class Decrypt {
             System.out.println("Invalid key shift");
             shiftKey = Integer.parseInt(myTerminalInput.readLine());
         }
-//suntract to get shift from the right
+//subract to get shift from the right
         shiftKey = 26 - shiftKey;
         System.out.println("=======================================================================================================");
 
@@ -18,6 +17,10 @@ public class Decrypt {
 
         String inputString = myTerminalInput.readLine();
         inputString = inputString.toLowerCase();
+        decrypter(inputString, shiftKey);
+    }
+
+    public static String decrypter(String inputString, int shiftKey) {
         String originalString = inputString.toUpperCase();
         char[] enteredString = new char[inputString.length()];
 
@@ -47,19 +50,14 @@ public class Decrypt {
                     k++;
                     break;
                 }
-
-
             }
-
-
         }
         String finalString = new String(enteredString);
         System.out.println("=======================================================================================================");
         System.out.println("The Encrypted message was: " + originalString);
         System.out.println("Your Decrypted message: " + finalString.toUpperCase());
         System.out.println("=======================================================================================================");
-
-
+        return finalString.toUpperCase();
     }
 }
 

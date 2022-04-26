@@ -2,30 +2,32 @@ import java.io.Console;
 import java.util.Locale;
 
 public class Encrypt {
-    public static void main() {
+    static int shiftKey;
+
+    public static String main() {
         Console myTerminalInput = System.console();
         System.out.println("Enter the key shift you want to use:");
-        int shiftKey = Integer.parseInt(myTerminalInput.readLine());
+        shiftKey = Integer.parseInt(myTerminalInput.readLine());
         if (shiftKey > 25) {
             System.out.println("Invalid key shift");
             shiftKey = Integer.parseInt(myTerminalInput.readLine());
         }
 //subtract fron 26 in order to get shift from the right
-shiftKey= 26 -shiftKey;
+        shiftKey = 26 - shiftKey;
         System.out.println("=======================================================================================================");
-
         System.out.println("Enter the string you want to encrypt:");
-
         String inputString = myTerminalInput.readLine();
         inputString = inputString.toLowerCase();
+        encrypter(inputString, shiftKey);
+        return inputString;
+    }
+
+    public static String encrypter(String inputString, int shiftKey) {
         String originalString = inputString.toUpperCase();
         char[] enteredString = new char[inputString.length()];
-
         for (int j = 0; j <= inputString.length() - 1; j++) {
-
             enteredString[j] = inputString.charAt(j);
-        }
-        ;
+        };
         int k = 0;
         for (char singleElement : enteredString) {
             for (char alphabet : App.alphabets) {
@@ -42,18 +44,16 @@ shiftKey= 26 -shiftKey;
                     k++;
                     break;
                 }
-
-
             }
-
-
-        } String finalString = new String(enteredString);
+        }
+        String finalString = new String(enteredString);
         System.out.println("=======================================================================================================");
         System.out.println("Your original message: " + originalString);
         System.out.println("Your encrypted message: " + finalString.toUpperCase());
         System.out.println("=======================================================================================================");
-
-    }}
+        return finalString.toUpperCase();
+    }
+}
 
 
 
