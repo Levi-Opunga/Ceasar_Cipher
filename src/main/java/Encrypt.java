@@ -1,22 +1,23 @@
 import java.io.Console;
 import java.util.Locale;
-
+import java.util.Scanner;
 public class Encrypt {
     static int shiftKey;
 
     public static String main() {
-        Console myTerminalInput = System.console();
+        Scanner myTerminalInput = new Scanner(System.in);
+
         System.out.println("Enter the key shift you want to use:");
-        shiftKey = Integer.parseInt(myTerminalInput.readLine());
+        shiftKey = Integer.parseInt(myTerminalInput.nextLine());
         if (shiftKey > 25) {
             System.out.println("Invalid key shift");
-            shiftKey = Integer.parseInt(myTerminalInput.readLine());
+            shiftKey = Integer.parseInt(myTerminalInput.nextLine());
         }
 //subtract fron 26 in order to get shift from the right
         shiftKey = 26 - shiftKey;
         System.out.println("=======================================================================================================");
         System.out.println("Enter the string you want to encrypt:");
-        String inputString = myTerminalInput.readLine();
+        String inputString = myTerminalInput.nextLine();
         inputString = inputString.toLowerCase();
         encrypter(inputString, shiftKey);
         return inputString;

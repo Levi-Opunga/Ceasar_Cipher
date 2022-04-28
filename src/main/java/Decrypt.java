@@ -1,13 +1,13 @@
 import java.io.Console;
-
+import java.util.Scanner;
 public class Decrypt {
     public static void main() {
-        Console myTerminalInput = System.console();
+        Scanner myTerminalInput = new Scanner(System.in);
         System.out.println("Enter the key shift you want to use to decrypt:");
-        int shiftKey = Integer.parseInt(myTerminalInput.readLine());
+        int shiftKey = Integer.parseInt(myTerminalInput.nextLine());
         if (shiftKey > 25) {
             System.out.println("Invalid key shift");
-            shiftKey = Integer.parseInt(myTerminalInput.readLine());
+            shiftKey = Integer.parseInt(myTerminalInput.nextLine());
         }
 //subract to get shift from the right
         shiftKey = 26 - shiftKey;
@@ -15,7 +15,7 @@ public class Decrypt {
 
         System.out.println("Enter the string you want to decrypt:");
 
-        String inputString = myTerminalInput.readLine();
+        String inputString = myTerminalInput.nextLine();
         inputString = inputString.toLowerCase();
         decrypter(inputString, shiftKey);
     }
